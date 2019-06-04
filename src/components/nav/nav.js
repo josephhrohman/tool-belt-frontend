@@ -1,44 +1,53 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Login from '../login/login.js'
+import Signup from '../signup/signup.js'
 import './nav.css'
 
 class Nav extends Component{
+  state = {
+    loggedIn: false,
+    showLogin: false,
+    showSignUp: false,
+  }
 
-  
+  showSignUp = (e) => {
+    if (this.state.showSignUp === false) {
+      this.setState({showSignUp: true});
+      this.setState({showLogin: false});
+    } else {
+    this.setState({showSignUp: false});
+    }
+  };
+
+  showLogin = (e) => {
+    if (this.state.showLogin === false) {
+      this.setState({showLogin: true});
+      this.setState({showSignUp: false});
+    } else {
+    this.setState({showLogin: false});
+    }
+  };
 
   render(){
     return (
       <nav>
-        <div className="logo-profile">
-          <Link to='/'><img alt="Logo" src="../images/hexLogo.png" className="logo-icon"/></Link>
-          <Link to='/profile'><img alt="Profile" src="../images/hexLogo.png" className="profile-icon"/></Link>
-        </div>
-        <aside>
-          <p className="nav-link">SignUp</p>
-          <p className="nav-link">Login</p>
-          <Link to='/projects' className="nav-link" >Projects</Link>
-          <Link to='/projects/project' className="nav-link" >Project</Link>
-          <Link to='/tools' className="nav-link" >Tools</Link>
-          <Link to='/tools/tool' className="nav-link" >Tool</Link>
-        </aside>
-        <div className="login-modal">
-          <h3>Login</h3>
-          <form action="">
-            <input type="text" placeholder="User Name" required />
-            <input type="password" placeholder="Password" required />
-            <button type="submit">Login</button>
-          </form>
-        </div>
-        <div className="signup-modal">
-          <h3>Sign Up</h3>
-          <form action="">
-            <input type="text" placeholder="User Name" required />
-            <input type="text" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <input type="password" placeholder="Confirm Password" required />
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
+        <Link to='/'><img alt="Logo" src="../images/hexLogo.png" className="logo-icon"/></Link>
+        {this.state.loggedIn === true 
+          ? 
+            <div className="button-grouping">
+              <p className="nav-link" onClick={this.logout}>Logout</p>
+              <Link to='/profile'><img alt="Profile" src="../images/hexLogo.png" className="profile-icon"/></Link>
+            </div>
+          : 
+            <>
+              <div className="button-grouping">
+                <p className="nav-link" onClick={this.showSignUp}>Sign Up</p>
+                <p className="nav-link" onClick={this.showLogin}>Login</p>
+              </div>
+              {this.state.showLogin === true ? <Login handleLogin={this.props.handleLogin}/> : <></> }
+              {this.state.showSignUp === true ? <Signup /> : <></> }
+            </>}
       </nav>
     )
   }

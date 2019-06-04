@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Landing from '../components/landingPage/landingPage';
-import Profile from '../components/profilePage/profilePage';
+import Landing  from '../components/landingPage/landingPage';
+import Profile  from '../components/profilePage/profilePage';
 import Projects from '../components/projectsPage/projectsPage';
-import Project from '../components/projectPage/projectPage';
-import Tools from '../components/toolsPage/toolsPage';
-import Tool from '../components/toolPage/toolPage';
+import Project  from '../components/projectPage/projectPage';
+import Tools    from '../components/toolsPage/toolsPage';
+import Tool     from '../components/toolPage/toolPage';
 
 const Routes = () => (
   <Switch>

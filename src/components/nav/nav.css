@@ -1,20 +1,12 @@
 /* Body __________________________________________________________ */
 nav {
-  border: 1px solid blue;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: auto 0;
-}
-
-/* Top Icons __________________________________________________________ */
-.logo-profile{
-  border: 1px solid orange;
+  border: 1px solid black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 10vh;
+  margin: auto 0;
 }
 
 .logo-icon {
@@ -27,27 +19,12 @@ nav {
   height: 50px;
 }
 
-/* Side Bar __________________________________________________________ */
-aside {
-  border: 1px solid red;
+.button-grouping{
   display: flex;
-  flex-direction: column;
-  width: 150px;
-  height: 90vh;
+  flex-direction: row;
 }
 
 .nav-link {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-  margin: 10px;
-}
-
-/* Modal __________________________________________________________ */
-.login-modal {
-  display: none;
-}
-
-.signup-modal {
-  display: none;
+  align-items: center;
+  margin: auto 2vw;
 }
