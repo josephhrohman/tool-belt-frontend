@@ -1,0 +1,23 @@
+.top-block {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.top-block-img {
+  height: 200px;
+  width: 300px;
+  background-color: aqua;
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.top-text {
+  height: 200px;
+  width: 300px;
+  background-color: gold;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+}

@@ -3,18 +3,16 @@ import { Switch, Route } from 'react-router-dom';
 import Landing  from '../components/landingPage/landingPage';
 import Profile  from '../components/profilePage/profilePage';
 import Projects from '../components/projectsPage/projectsPage';
-import Project  from '../components/projectPage/projectPage';
 import Tools    from '../components/toolsPage/toolsPage';
-import Tool     from '../components/toolPage/toolPage';
 
-const Routes = () => (
+const Routes = ({ currentUser }) => (
   <Switch>
     <Route exact path='/' component={ Landing }/>
-    <Route path='/profile' component={ Profile }/>
-    <Route path='/projects' component={ Projects }/>
-    <Route path='/projects/project' component={ Project }/>
+    <Route path='/profile:userId' render={(props) => <Profile {...props} currentUser={currentUser} />}/>
+    <Route path='/projects/' component={ Projects }/>
+    <Route path='/projects/:postId' render={(props) => <Projects {...props} currentUser={currentUser} />}/>
     <Route path='/tools' component={ Tools }/>
-    <Route path='/tools/tool' component={ Tool }/>
+    <Route path='/tools/:postId' render={(props) => <Tools {...props} currentUser={currentUser} />}/>
   </Switch>
 );
 

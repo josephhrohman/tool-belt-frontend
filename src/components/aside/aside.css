@@ -1,53 +1,21 @@
-/* Body __________________________________________________________ */
-nav {
-  border: 1px solid blue;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: auto 0;
-}
-
-/* Top Icons __________________________________________________________ */
-.logo-profile{
-  border: 1px solid orange;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 10vh;
-}
-
-.logo-icon {
-  width: 50px;
-  height: 50px;
-}
-
-.profile-icon{
-  width: 50px;
-  height: 50px;
-}
-
-/* Side Bar __________________________________________________________ */
 aside {
-  border: 1px solid red;
+  border-bottom: 1px solid blue;
+  border-right: 1px solid blue;
+  position: fixed;
   display: flex;
   flex-direction: column;
-  width: 150px;
-  height: 90vh;
+  height: 100px;
+  width: 75px;
+  background-color: beige;
+  border-radius: 0 0 10px 0;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-  margin: 10px;
+.tabs {
+  background-color: beige;
 }
 
-/* Modal __________________________________________________________ */
-.login-modal {
-  display: none;
+.category-tab {
+  margin: auto auto;
 }
 
-.signup-modal {
-  display: none;
-}
+

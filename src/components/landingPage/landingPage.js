@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import TopBlock from '../topBlock/topBlock';
 import './landingPage.css'
 
 class Landing extends Component{
   render(){
     return(
-      <div>
-        <h1>Landing Page</h1>
-        <div>
-          <p className="test-tag">Test</p>
+      <>
+        <div className= "landing">
+          <TopBlock />
+          <TopBlock />
+          <TopBlock />
+          <TopBlock />
+          <TopBlock />
+          <TopBlock />
         </div>
-      </div>
+      </>
     )
   }
 }

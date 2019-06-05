@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import './login.css'
 
-function Login(handleLogin) {
+const Login = ({ setCurrentUser }) => {
+  const [ userData, setUserData ] = useState({
+          email: '',
+          password: '',
+        }),
+        { email, password } = userData;
 
-  
+
+  const handleChange = e => {
+    setUserData({ ...userData, [e.target.name] : e.target.value
+    });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:4000/api/v1/auth/login', userData, {
+        withCredentials: true});
+        const currentUser = response.data.currentUser;
+        localStorage.currentUser = currentUser;
+        this.setCurrentUser(currentUser);
+        console.log(currentUser);
+      } catch(error) {
+      console.log(error);
+    };
+  };
+
   return (
     <div className="login-modal">
       <h3>Login</h3>
-      <form action="" className="form-boxes" onSubmit={handleLogin}>
-        <input className="inputField" type="email" id='email' name='email' placeholder="Email" />
-        <input className="inputField" type="password" id='password' name='password' placeholder="Password" />
+      <form className="form-boxes" onSubmit={handleSubmit}>
+        <input className="inputField" type="email" id='email' onChange={handleChange} name='email' value={email} placeholder="Email" />
+        <input className="inputField" type="password" id='password' onChange={handleChange} name='password' value={password} placeholder="Password" />
         <input className="inputField" type='submit' value='submit' />
       </form>
     </div>
@@ -17,3 +42,28 @@ function Login(handleLogin) {
 }
 
 export default Login;
+
+
+
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   axios({
+  //     method: 'post',
+  //     url: 'http://localhost:4000/api/v1/auth/login',
+  //     data: {
+  //       email: this.state.email,
+  //       password: this.state.password,
+  //     }
+  //   }).then(response => {
+  //     if (response.status === 200) {
+  //       console.log(response)
+  //       localStorage.currentUser = currentUser; //LOCALSTORAGE USAGE ***** HERE HERE HERE ******
+  //       setCurrentUser(currentUser);
+  //       this.setState({loggedIn: true});
+  //       this.setState({id: response.data});
+  //       // this.props.history.push('/user');
+  //     };
+  //   }).catch((errors) => {
+  //     console.log(errors.response);
+  //   });
+  // }

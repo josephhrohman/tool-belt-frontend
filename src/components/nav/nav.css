@@ -1,12 +1,12 @@
 /* Body __________________________________________________________ */
 nav {
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   height: 10vh;
   margin: auto 0;
+  background-color: beige;
 }
 
 .logo-icon {

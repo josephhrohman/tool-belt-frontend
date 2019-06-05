@@ -1,35 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './signup.css'
 
-function SignUp() { 
+const SignUp = () => {
+  const [ newUser, setNewUser ] = useState({
+          name: '',
+          email: '',
+          password: '',
+          password2: ''
+        }),
+        {name, email, password, password2} = newUser;
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    const name = document.querySelector('#name').value,
-          email = document.querySelector('#email').value,
-          password = document.querySelector('#password').value,
-          password2 = document.querySelector('#password2').value;
-
-    axios({
-      method: 'post',
-      url: 'http://localhost:4000/api/v1/auth/register',
-      data: { name, email, password, password2 }
-    }).then(function (response) {
-      console.log(response);
-    }).catch((err) => {
-      console.log(err);
+  const handleChange = (e) => {
+    setNewUser({
+      ...newUser,
+      [e.target.name]: e.target.value
     });
-  }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    console.log(newUser);
+    try {
+      await axios.post('http://localhost:4000/api/v1/auth/register', newUser, {withCredentials: true});
+      console.log('success');
+    } catch(err) {
+      console.log('failed')
+    };
+  };
 
   return (
     <div className="signup-modal">
       <h3>Sign Up</h3>
       <form className='form-boxes' onSubmit={handleSignUp}>
-        <input className="inputField" type="text" id='name' name='name' placeholder="Name" />
-        <input className="inputField" type="email" id='email' name='email' placeholder="Email" />
-        <input className="inputField" type="password" id='password' name='password' placeholder="Password" />
-        <input className="inputField" type="password" id='password2' name='password2' placeholder="Confirm Password" />
+        <input className="inputField" type="text" onChange={handleChange} value={name} name='name' placeholder="Name" />
+        <input className="inputField" type="email" onChange={handleChange} value={email} name='email' placeholder="Email" />
+        <input className="inputField" type="password" onChange={handleChange} value={password} name='password' placeholder="Password" />
+        <input className="inputField" type="password" onChange={handleChange} value={password2} name='password2' placeholder="Confirm Password" />
         <input className="inputField" type='submit' value='submit' />
       </form>
     </div>
