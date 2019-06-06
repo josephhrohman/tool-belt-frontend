@@ -5,51 +5,29 @@ import Signup from '../signup/signup.js'
 import './nav.css'
 
 const Nav = ({ currentUser }) => {
-  const [ toggle, setToggle ] = useState({
-          toggleLogin: 'false',
-          toggleSignup: 'false',
-        });
+  const [ toggleL, setToggleL ] = useState(false),
+        [ toggleS, setToggleS ] = useState(false);
 
-  // const toggleWindow = e => {
-  //         setToggle({ ...toggle, [e.target.name] : e.target.value
-  //         });
-  //       };
-        
-
-  const toggleLogin = async e => {
-    if (toggleLogin === false) {
-      setToggle({toggleLogin: 'true', toggleSignup: 'false'})
-    } else {
-      setToggle({toggleLogin: 'true'});
-    }
-  };
-
-  const toggleSignup = async e => {
-    if (toggleSignup === false) {
-      setToggle({toggleSignup: 'true', toggleSignup: 'false'})
-    } else {
-      setToggle({toggleSignup: 'true'});
-    }
-  };
+  const toggleLogin = async (e) => {(toggleL ? setToggleL(false) : setToggleL(true))},
+        toggleSignup = async (e) => {(toggleS ? setToggleS(false) : setToggleS(true))};
 
   return (
     <nav>
+
       { currentUser === true 
         ? 
           <div className="button-grouping">
             <p className="nav-link" >Logout</p> 
-            <Link to='/profile'><img alt="Profile" src="../images/hexLogo.png" className="profile-icon"/></Link>
           </div>
         : 
           <>
             <div className="button-grouping">
-              <p className="nav-link" onClick={toggleLogin}>Sign Up</p>
-              <p className="nav-link" onClick={toggleSignup}>Login</p>
+              <p className="nav-link" onClick={toggleSignup}>Sign Up</p>
+              <p className="nav-link" onClick={toggleLogin}>Login</p>
+              <Link to='/profile'><img alt="Profile" src="../images/hexLogo.png" className="profile-icon"/></Link>
             </div>
-            {useState.toggleLogin === true ? <Login /> : <></> }
-            {useState.toggleSignup === true ? <Signup /> : <></> }
-            {/* <Login />  */}
-            {/* <Signup /> */}
+            {toggleL === true ? <Login /> : <></> }
+            {toggleS === true ? <Signup /> : <></> }
           </>}
     </nav>
   )
@@ -57,6 +35,8 @@ const Nav = ({ currentUser }) => {
 
 export default Nav;
 
+// NOOOOOOOTES
+// Make the toggling modals close each other when opened
 
 // handleLogin={this.props.handleLogin}
 //onClick={this.logout}

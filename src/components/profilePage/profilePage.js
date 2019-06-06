@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ProfileBlock from '../profileBlock/profileBlock.js';
 import './profilePage.css';
 
-const Profile = ({ match, currentUser, showButtons, deletePost }) => {
+const ProfilePage = ({ match, deletePost }) => { //deletePost
   const [ error, setError ] = useState(null),
         [ user, setUser ] = useState({}),
         [ userPosts, setUserPosts ] = useState([]);
@@ -20,9 +21,27 @@ const Profile = ({ match, currentUser, showButtons, deletePost }) => {
         setError(err.response.data.error);
     };
   }
-
   getProfile();
   }, [match.params.userId]); //This makes it componentDidMount
+
+  const projectPosts = userPosts
+    .sort((a, b) => new Date(b.sign_up_date) - new Date(a.sign_up_date))
+    .map(projectPost => <ProfileBlock key={projectPost._id} post={projectPost} titleOnly={true} deletePost={deletePost}/>)
+
+  // const deleteProject = Id => {
+  //   if (window.confirm('Are you sure?')) {
+  //     try {
+  //       const response = await axios.delete(`${process.env.REACT_APP_API}/posts/${postId}`,
+  //         { withCredentials: true });
+  //       // console.log(response);
+  //       const updatedPosts = userPosts.filter(post => post._id != postId);
+  //       setUserPosts(updatedPosts);
+  //     } catch(err) {
+  //       console.log(err);
+  //       setError(err.response.data.error);
+  //     };
+  //   };
+  // };
 
   return(
     <div>
@@ -39,6 +58,7 @@ const Profile = ({ match, currentUser, showButtons, deletePost }) => {
       </div>
       <div className="profile-block">
         <p className="sample-block">User Projects</p> 
+        { projectPosts }
       </div>
       <div className="profile-block">
         <p className="sample-block">User Tools</p>
@@ -47,46 +67,10 @@ const Profile = ({ match, currentUser, showButtons, deletePost }) => {
   )
 }
 
-export default Profile;
+export default ProfilePage;
 
 
-const ProfileContainer = ({ match, currentUser, showButtons, deletePost }) => {
-
-  useEffect(() => { //New method JUST for Hooks; Takes the place of 'componentDidMount'
-    const getProfile = async () => {
-      try {
-        const userId = match.params.userId;
-        const response = await axios.get(`${process.env.REACT_APP_API}/users/${userId}`);
-        console.log(response);
-        setUser(response.data.user);
-        setUserPosts(response.data.userPosts);
-      } catch(err) {
-        console.log(err);
-        setError(err.response.data.error);
-      };
-    }
-
-    getProfile();
-  }, [match.params.userId]); //This makes it componentDidMount
-
-  const deletePost = postId => {
-    if (window.confirm('Are you sure?')) {
-      try {
-        const response = await axios.delete(`${process.env.REACT_APP_API}/posts/${postId}`,
-          { withCredentials: true });
-        // console.log(response);
-        const updatedPosts = userPosts.filter(post => post._id != postId);
-        setUserPosts(updatedPosts);
-      } catch(err) {
-        console.log(err);
-        setError(err.response.data.error);
-      };
-    };
-  };
-
-  return( 
-    <Profile user={user} userPosts={userPosts} showButtons={showButtons} deletePost={deletePost}/>
-  );
-};
-
-export default ProfileContainer;
+// return( 
+//   <Profile user={user} userPosts={userPosts} deletePost={deletePost}/>
+// );
+// };

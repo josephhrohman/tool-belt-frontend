@@ -6,7 +6,7 @@ import './aside.css';
 function Aside() {
   return (
     <aside>
-      <Link to='/'><img alt="Logo" src='#' className="logo-icon"/></Link>
+      <Link to='/'><img alt="Profile" src="../images/hexLogo.png" className="logo-icon"/></Link>
       <div className="tabs">
         <div className="category-tab">
           <Link to='/projects'>Project</Link>
