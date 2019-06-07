@@ -9,7 +9,7 @@ import Tools    from '../components/toolsPage/toolsPage';
 const Routes = ({ currentUser }) => (
   <Switch>
     <Route exact path='/' component={ Landing }/>
-    <Route path='/profile:userId' render={(props) => <ProfilePage {...props} />}/>
+    <Route path='/profile/:userId' render={(props) => <ProfilePage {...props} />}/>
     <Route path='/profile' component={ Profile }/>
     <Route path='/projects/' component={ Projects }/>
     <Route path='/projects/:postId' render={(props) => <Projects {...props} currentUser={currentUser} />}/>

@@ -20,9 +20,9 @@ const Login = ({ setCurrentUser }) => {
     try {
       const response = await axios.post('http://localhost:4000/api/v1/auth/login', userData, {
         withCredentials: true});
-        const currentUser = response.data.currentUser;
+        const currentUser = response.data;
         localStorage.currentUser = currentUser;
-        this.setCurrentUser(currentUser);
+        setCurrentUser(currentUser);
         console.log(currentUser);
       } catch(error) {
       console.log(error);
