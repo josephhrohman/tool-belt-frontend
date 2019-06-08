@@ -1,61 +1,79 @@
 import React, { useEffect, useState } from 'react';
-import ProfileBlock from '../profileBlock/profileBlock.js';
+import ProfileInfo from './profileInfo/profileInfo';
+import ToolBelt from './toolBelt/toolBelt';
+import ProfileProjects from './profileProjects/profileProjects';
+import ProfileTools from './profileTools/profileTools';
 import axios from 'axios';
 import './profile.css';
 
-const Profile = ({ match, deletePost }) => {
+//{ match, deletePost, currentUser }
+
+const Profile = () => {
   const [ error, setError ] = useState(null),
-        [ user, setUser ] = useState({}),
-        [ userPosts, setUserPosts ] = useState([]);
+        // [ user, setUser ] = useState({}),
+        [ userInfo, setUserInfo ] = useState({}),
+        [ toolBelt, setToolBelt ] = useState([]),
+        [ userProjects, setUserProjects ] = useState([]),
+        [ tools, setTools ] = useState([]);
 
-// Getting Profile.. Now do this for post data.
+  const displayUserInfo = userInfo => <ProfileInfo userInfo={userInfo}/>;
+  const displayToolBelt = toolBelt => toolBelt.map(tool => <ToolBelt toolBelt={tool} key={tool._id}/>);
+  const displayProjects = userProjects => userProjects.map(project => <ProfileProjects userProject={project} key={project._id}/>);
+  const displayTools    = tools => tools.map(tool => <ProfileTools tools={tool} key={tool._id}/>);
+  
   useEffect(() => {
-    const getProfile = async () => {
-      try {
-        const userId = match.params._id;
-        const response = await axios.get(`http://localhost:4000/api/v1/users/${userId}`);
-        console.log(response);
-        setUser(response.data.user);
-        setUserPosts(response.data.userPosts);
-      } catch(err) {
-        console.log(err);
-        setError(err.response.data.error);
-      };
-    }
-  getProfile();
-  }, [match.params.userId]);
+    getProfile();
+    getToolBelt();
+    getProjects();
+    getTools();
+  }, []);
 
-// Axios call for all posts 'findMany', search for userId
-// For each method funnels these data pockets into 'profileBlock' component
-// Show all components in specified area in profile
+  const getProfile = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/api/v1/users/${localStorage.currentUser}`);
+      console.table(response.data.user);
+      setUserInfo(response.data.user);
+    } catch(err) {
+      console.log(err);
+      setError(err.response.data.error);
+    };
+  }
+  
+  const getToolBelt = async () => {
+    const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+    console.table(response.data);
+    setToolBelt(response.data);
+    console.table({tools});
+  }
 
-const displayTools = tools => tools.map(tool => <ProfileBlock data={tool}/>)
-const displayProjects = projects => projects.map(project => <ProfileBlock data={project}/>)
+  const getProjects = async () => {
+    const response = await axios.get(`http://localhost:4000/api/v1/projects`);
+    console.table(response.data);
+    setUserProjects(response.data);
+    console.table({userProjects});
+  }
 
-let tools = [{name: 'hammer'}, {name: 'hammer'}, {name: 'hammer'}, {name: 'hammer'}]
-let projects= [{name:'hammer things'},{name:'hammer things'},{name:'hammer things'},{name:'hammer things'}]
+  const getTools = async () => {
+    const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+    console.table(response.data);
+    setTools(response.data);
+    console.table({tools});
+  }
+
 
   return(
     <>
-      <div className="profile-section">
-        <div className="user-block">
-          <p className="user-info">User Name</p>
-          <p className="user-info">Email</p>
-          <p className="user-info">Date Joined</p>
-        </div>
-        <img src="#" alt="Profile" className="user-pic" />
+      <div className='profile-section'>
+          {userInfo && displayUserInfo(userInfo)}
       </div>
-      <div className="profile-section">
-        {/* <p className="sample-block">ToolBelt</p>  */}
-        {tools && displayTools(tools)}
+      <div className='profile-section'>
+          {toolBelt && displayToolBelt(toolBelt)}
       </div>
-      <div className="profile-section">
-        {/* <p className="sample-block">User Projects</p>  */}
-        {projects && displayProjects(projects)}
+      <div className='profile-section'>
+          {userProjects && displayProjects(userProjects)}
       </div>
-      <div className="profile-section">
-        {/* <p className="sample-block">User Tools</p> */}
-        
+      <div className='profile-section'>
+          {tools && displayTools(tools)}
       </div>
     </>
   )
