@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProfileBlock from '../../replicated/profileBlock/profileBlock';
-import ProfileTools from './profileTools/profileTools';
+import ProfileTools from '../../replicated/profileTools/profileTools';
 import axios from 'axios';
 import './profile.css';
 
@@ -60,23 +60,27 @@ const Profile = () => {
 
   return(
     <>
-      <div className="profile-info-block">
+      <div className="user-info-block">
         <div className="user-block">
           <p className="user-info">name: {userInfo.name}</p>
           <p className="user-info">email: {userInfo.email}</p>
           <p className="user-info">sign up date: {userInfo.sign_up_date}</p>
         </div>
-        <img src={userInfo.image_url} alt="Project Img" className="profile-block-img"/>
+        <img src={userInfo.image_url || "../images/tbLogo.png"} alt="Project Img" className="user-img"/>
       </div>
+      <hr />
       <div className='profile-section'>
           {toolBelt && displayToolBelt(toolBelt)}
       </div>
+      <hr />
       <div className='profile-section'>
           {userProjects && displayProjects(userProjects)}
       </div>
+      <hr />
       <div className='profile-section'>
           {tools && displayTools(tools)}
       </div>
+      <hr />
     </>
   )
 }
