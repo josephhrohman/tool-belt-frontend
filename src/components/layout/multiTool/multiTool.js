@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ArticleBlock from '../../replicated/articleBlock/articleBlock';
 import CreateItem from '../../replicated/createItem/createItem';
@@ -38,7 +39,7 @@ const Tools = ({ currentUser }) => {
             <li>Soldering</li>
             <li>Sanding</li>
           </div>
-          {currentUser ? <a className="add-tool-button" onClick={toggleAdd}>Add a Tool</a> : null}
+          {currentUser ? <Link className="add-tool-button" to='/tools/newTool'>Add a Tool</Link> : null}
           {toggleA ? <CreateItem /> : null }
         </div>
         <div className="all-tools-container"> {allTools && displayTools(allTools)} </div>

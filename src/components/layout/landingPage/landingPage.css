@@ -5,10 +5,18 @@
   align-items: center;
 }
 
+.landing-icon {
+  position: fixed;
+  z-index: -1;
+  width: 50vw;
+  height: auto;
+}
+
 .landing-top {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  background-color: white;
 }
 
 .all-block {
@@ -21,10 +29,12 @@
   justify-content: center;
   margin: 10px 20px;
   text-decoration: none; 
+  background-color: white;
 }
 
 .landing-articles {
   display: flex;
   flex-direction: column;
   width: 80vw;
+  background-color: white;
 }

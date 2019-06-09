@@ -14,9 +14,15 @@ const Profile = () => {
         [ userProjects, setUserProjects ] = useState([]),
         [ tools, setTools ] = useState([]);
 
-  const displayToolBelt = data => data.map(tool => <ProfileBlock data={tool} key={tool._id}/>);
-  const displayProjects = data => data.map(project => <ProfileBlock data={project} key={project._id}/>);
-  const displayTools    = data => data.map(tool => <ProfileTools data={tool} key={tool._id}/>);
+  const displayToolBelt = data => data
+        .map(tool => <ProfileBlock data={tool} key={tool._id}/>);
+
+  const displayProjects = data => data
+        .map(project => <ProfileBlock data={project} key={project._id}/>);
+
+  const displayTools    = data => data
+        .map(tool => <ProfileTools data={tool} key={tool._id}/>);
+        
 
   useEffect(() => {
     getProfile();
@@ -70,15 +76,18 @@ const Profile = () => {
       </div>
       <hr />
       <div className='profile-section'>
-          {toolBelt && displayToolBelt(toolBelt)}
+        <h1>My Tool Belt</h1>
+        {toolBelt && displayToolBelt(toolBelt)}
       </div>
       <hr />
       <div className='profile-section'>
-          {userProjects && displayProjects(userProjects)}
+        <h1>My Projects</h1>
+        {userProjects && displayProjects(userProjects)}
       </div>
       <hr />
       <div className='profile-section'>
-          {tools && displayTools(tools)}
+        <h1>My Tools</h1>
+        {tools && displayTools(tools)}
       </div>
       <hr />
     </>

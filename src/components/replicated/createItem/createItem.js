@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './createItem.css'
 
-const CreateItem = () => {
-  const [ newUser, setNewUser ] = useState({
-          name: '',
-          email: '',
-          password: '',
-          password2: ''
+const CreateItem = ({ currentUser }) => {
+  const [ newItem, setNewItem ] = useState({
+          title: '',
+          image_url: '',
+          description: '',
+          user_id: currentUser
         }),
-        {name, email, password, password2} = newUser;
+        {title, image_url, description,} = newItem;
 
   const handleChange = (e) => {
-        setNewUser({
-          ...newUser,
+        setNewItem({
+          ...newItem,
           [e.target.name]: e.target.value
         });
   };
 
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    console.log(newItem);
+    try {
+      await axios.post('http://localhost:4000/api/v1/projects/', newItem, {withCredentials: true});
+      console.log('success');
+      console.log(newItem);
+    } catch(err) {
+      console.log('failed')
+    };
+  };
+
   return (
-    <div className="signup-modal">
+    <div className="create-item-body">
       <h3>New Thing!</h3>
-      <form className='form-boxes' >
-        <input className="inputField" type="text" onChange={handleChange} value={name} name='name' placeholder="Name" />
-        <input className="inputField" type="email" onChange={handleChange} value={email} name='email' placeholder="Email" />
-        <input className="inputField" type="password" onChange={handleChange} value={password} name='password' placeholder="Password" />
-        <input className="inputField" type="password" onChange={handleChange} value={password2} name='password2' placeholder="Confirm Password" />
+      <form className='form-boxes' onSubmit={handleCreate}>
+        <input className="inputField" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
+        <input className="inputField" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />
+        <input className="inputField" type="text" onChange={handleChange} value={description} name='description' placeholder="Description" />
         <input className="inputField" type='submit' value='submit' />
       </form>
     </div>
@@ -35,3 +46,17 @@ const CreateItem = () => {
 export default CreateItem;
 
 // onSubmit={handleSignUp}
+
+
+  // useEffect(() => {
+  //   console.table(allProjects);
+  //   getProjects();
+  //   console.table(allProjects);
+  // }, []);
+
+  // const getProjects = async () => {
+  //   const response = await axios.get(`http://localhost:4000/api/v1/projects`);
+  //   console.table(response.data);
+  //   setAllProjects(response.data);
+  //   console.table({allProjects});
+  // }

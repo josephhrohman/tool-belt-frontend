@@ -38,7 +38,7 @@ const Projects = ({ currentUser }) => {
             <li>Plumbing</li>
             <li>Electrical</li>
           </div>
-          {currentUser ? <Link className="add-project-button" to='/project/newProject'>Add a Project</Link> : null}
+          {currentUser ? <Link className="add-project-button" to='/projects/newProject'>Add a Project</Link> : null}
         </div>
         <div className="all-projects-container"> {allProjects && displayProjects(allProjects)} </div>
       </div>

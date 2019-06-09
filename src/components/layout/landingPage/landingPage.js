@@ -42,8 +42,8 @@ const Landing = () => {
   
   return(
     <>
+      <img className="landing-icon" src="../images/tbLogo.png" alt="Landing Page Logo" />
       <div className= "landing">
-        <img src="" alt="" />
         <h1>Top Projects</h1>
         <div className="landing-top">
           {topProjects && displayProjects(topProjects)}
