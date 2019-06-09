@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import Routes from './config/routes.js';
 import Nav from './components/layout/nav/nav.js';
+import Footer from './components/layout/footer/footer';
 import './App.css';
 
 const App = ({history}) => {
@@ -20,6 +21,7 @@ const App = ({history}) => {
     <>
       <Nav handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
       <Routes currentUser={currentUser}/>
+      <Footer />
     </>
   );
 }

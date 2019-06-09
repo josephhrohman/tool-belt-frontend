@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ArticleBlock from '../../replicated/articleBlock/articleBlock';
-import './project.css';
+import './multiProject.css';
 
 const Projects = () => {
   const [ allProjects, setAllProjects ] = useState([]);
 
-  const displayProjects = data => data.map(project => <ArticleBlock data={project} key={project._id}/>);
+  // const displayProjects = data => data
+  //   .sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date))
+  //   .slice(0, 3)
+  //   .map(project => <ArticleBlock data={project} key={project._id}/>);
+
+  const displayProjects = data => data
+    .sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date))
+    .map(project => <ArticleBlock data={project} key={project._id}/>);
 
   useEffect(() => {
+    console.table(allProjects);
     getProjects();
+    console.table(allProjects);
   }, []);
 
   const getProjects = async () => {
@@ -23,7 +32,7 @@ const Projects = () => {
     <>
       <div className= "projects-body">
         <img src="" alt="" />
-        <h1>Top Projects</h1>
+        <h1>All Projects</h1>
         <div className="landing-top"> {allProjects && displayProjects(allProjects)} </div>
       </div>
     </>

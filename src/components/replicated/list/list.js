@@ -20,13 +20,14 @@ function List() {
       </div>
       <hr />
     </>
-    // <div className="list-body">
+  )
+}
+
+export default List;
+
+// <div className="list-body">
     //   <img src="#" alt="list-img" />
     //   <p class="content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, 
     //     natus! Adipisci porro culpa vel placeat, facilis minima nesciunt voluptatibus aliquam 
     //     tempora vitae fuga. Numquam perferendis, ipsum eos nulla nobis libero! </p>
     // </div>
-  )
-}
-
-export default List;

@@ -24,10 +24,8 @@ const Nav = ({ currentUser, setCurrentUser, handleLogout }) => {
       <Link to='/' className="logo-container"><img alt="Landing" src="../images/tbLogo.png" className="logo-icon"/></Link>
       { currentUser ? 
           <>
-            <div className="button-grouping">
-              <p className="nav-link" onClick={handleLogout}>Logout</p> 
-            </div>
             <Link className="nav-link" to='/profile/:userId'>Profile</Link>
+            <p className="nav-link" onClick={handleLogout}>Logout</p>
           </> : 
           <>
             <div className="button-grouping">

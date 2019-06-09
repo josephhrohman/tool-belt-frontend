@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Landing  from '../components/layout/landingPage/landingPage';
 import Profile  from '../components/layout/profile/profile';
-import Projects from '../components/layout/projects/projects';
-import Tools    from '../components/layout/tools/tools';
+import Projects from '../components/layout/multiProject/multiProject';
+import Tools    from '../components/layout/multiTool/multiTool';
 
 const Routes = ({ currentUser }) => (
   <Switch>

@@ -26,6 +26,7 @@ nav {
 .logo-container {
   display: flex;
   flex-direction: row;
+  margin: 0 30px;
 }
 
 .logo-icon {

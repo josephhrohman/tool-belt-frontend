@@ -9,18 +9,6 @@ function Section({data}) {
 
   return(
     <div className="section-body">
-      {/* <img className="section-img" src={data.image_url} alt="Spalsh Img" />
-      <div className="article-body">
-        <h1>{data.title}</h1>
-        <hr/>
-        <p className="description">{data.description}</p>
-        <hr/>
-        <p className="list-items">
-          <ul>
-            {data.list.content}
-          </ul>
-        </p>
-      </div> */}
       <img className="section-img" src={img_url} alt="Spalsh Img" />
       <div className="article-body">
         <h1>Hammer</h1>
@@ -41,3 +29,16 @@ function Section({data}) {
 }
 
 export default Section;
+
+ {/* <img className="section-img" src={data.image_url} alt="Spalsh Img" />
+      <div className="article-body">
+        <h1>{data.title}</h1>
+        <hr/>
+        <p className="description">{data.description}</p>
+        <hr/>
+        <p className="list-items">
+          <ul>
+            {data.list.content}
+          </ul>
+        </p>
+      </div> */}
