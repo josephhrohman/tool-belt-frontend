@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import Section from '../../replicated/section/section';
-import './uniProject.css';
+import './uniTool.css';
 
 const Tool = () => {
   // const [ allTools, setAllTools ] = useState([]);
