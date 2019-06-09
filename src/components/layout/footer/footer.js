@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
-import Section from '../../replicated/section/section';
-import './tools.css';
+import React from 'react';
+import './footer.css';
 
-class Tools extends Component{
-  render(){
-    return(
-      <div>
-        <Section />
+const Tools = () => {
+  return(
+    <div className="footer-body">
+      <div className="links">
+        <p>GitHub</p>
+        <p>HomeDepot</p>
+        <p>Amazon</p>
+        <p>Makezine</p>
+        <p>Lifehacker</p>
+        <p>Instructables</p>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Tools;

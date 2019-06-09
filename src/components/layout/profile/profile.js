@@ -18,11 +18,6 @@ const Profile = () => {
   const displayProjects = data => data.map(project => <ProfileBlock data={project} key={project._id}/>);
   const displayTools    = data => data.map(tool => <ProfileTools data={tool} key={tool._id}/>);
 
-  // const displayUserInfo = userInfo => <ProfileInfo userInfo={userInfo}/>;
-  // const displayToolBelt = toolBelt => toolBelt.map(tool => <ToolBelt toolBelt={tool} key={tool._id}/>);
-  // const displayProjects = userProjects => userProjects.map(project => <ProfileProjects userProject={project} key={project._id}/>);
-  // const displayTools    = tools => tools.map(tool => <ProfileTools tools={tool} key={tool._id}/>);
-  
   useEffect(() => {
     getProfile();
     getToolBelt();
