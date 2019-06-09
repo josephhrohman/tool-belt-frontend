@@ -1,13 +1,13 @@
 import React from 'react';
 import './profileTools.css'
 
-function ProfileTools({tools}) {
+function ProfileTools({data}) {
   return(
     <div className="profile-block">
-      <img src={tools.image_url} alt="Project Img" className="profile-block-img"/>
-      <p className="profile-text">{tools.title}</p>
-      <p className="profile-text">{tools.description}</p>
-      <p className="profile-text">{tools.user_id ? tools.user_id.name : null}</p>
+      <img src={data.image_url} alt="Project Img" className="profile-block-img"/>
+      <p className="profile-text">{data.title}</p>
+      <p className="profile-text">{data.description}</p>
+      <p className="profile-text">{data.user_id ? data.user_id.name : null}</p>
     </div>
   )
 }

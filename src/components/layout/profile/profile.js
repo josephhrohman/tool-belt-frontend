@@ -17,6 +17,11 @@ const Profile = () => {
   const displayToolBelt = data => data.map(tool => <ProfileBlock data={tool} key={tool._id}/>);
   const displayProjects = data => data.map(project => <ProfileBlock data={project} key={project._id}/>);
   const displayTools    = data => data.map(tool => <ProfileTools data={tool} key={tool._id}/>);
+
+  // const displayUserInfo = userInfo => <ProfileInfo userInfo={userInfo}/>;
+  // const displayToolBelt = toolBelt => toolBelt.map(tool => <ToolBelt toolBelt={tool} key={tool._id}/>);
+  // const displayProjects = userProjects => userProjects.map(project => <ProfileProjects userProject={project} key={project._id}/>);
+  // const displayTools    = tools => tools.map(tool => <ProfileTools tools={tool} key={tool._id}/>);
   
   useEffect(() => {
     getProfile();
@@ -40,7 +45,7 @@ const Profile = () => {
     const response = await axios.get(`http://localhost:4000/api/v1/tools`);
     console.table(response.data);
     setToolBelt(response.data);
-    console.table({tools});
+    console.log({tools});
   }
 
   const getProjects = async () => {
