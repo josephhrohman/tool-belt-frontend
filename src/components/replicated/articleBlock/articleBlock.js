@@ -4,15 +4,6 @@ import './articleBlock.css'
 
 function ArticleBlock({data}) {
 
-  // const data = {
-  //   image_url : "https://images-na.ssl-images-amazon.com/images/I/61dPKONTxQL._SY450_.jpg",
-  //   title: "Drills",
-  //   description: "You use these to drill, screw, bore, and",
-  //   user_id: "555",
-  //   tool_id: "444",
-  //   _id: "123"
-  // };
-
   return(
     <div className="block-body">
       <img src={data.image_url} alt="Block Img" className="block-img"/>

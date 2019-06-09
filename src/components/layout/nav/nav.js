@@ -22,7 +22,6 @@ const Nav = ({ currentUser, setCurrentUser, handleLogout }) => {
         <Link className="nav-link" to='/tools'>Tools</Link>
       </div>
       <Link to='/' className="logo-container"><img alt="Landing" src="../images/tbLogo.png" className="logo-icon"/></Link>
-      {/* <p className="nav-link" onClick={LogUser}>LogUser</p> */}
       { currentUser ? 
           <>
             <div className="button-grouping">
@@ -46,6 +45,3 @@ export default Nav;
 
 // NOOOOOOOTES
 // Make the toggling modals close each other when opened
-
-// handleLogin={this.props.handleLogin}
-//onClick={this.logout}
