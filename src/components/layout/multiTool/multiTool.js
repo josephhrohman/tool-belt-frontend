@@ -1,37 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ArticleBlock from '../../replicated/articleBlock/articleBlock';
+import CreateItem from '../../replicated/createItem/createItem';
 import './multiTool.css';
 
-const Tools = () => {
-  const [ allTools, setAllTools ] = useState([]);
+const Tools = ({ currentUser }) => {
+  const [ allTools, setAllTools ] = useState([]),
+        [ toggleA, setToggleA ] = useState(false);
 
-  // const displayProjects = data => data
-  //   .sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date))
-  //   .slice(0, 3)
-  //   .map(project => <ArticleBlock data={project} key={project._id}/>);
-
+  const toggleAdd = async (e) => {(toggleA ? setToggleA(false) : setToggleA(true))};
+  
   const displayTools = data => data
-    .sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date))
-    .map(tool => <ArticleBlock data={tool} key={tool._id}/>);
+        .sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date))
+        .map(tool => <ArticleBlock data={tool} key={tool._id}/>);
 
   useEffect(() => {
-    getTools();
+        getTools();
   }, []);
 
   const getTools = async () => {
-    const response = await axios.get(`http://localhost:4000/api/v1/tools`);
-    console.table(response.data);
-    setAllTools(response.data);
-    console.table({allTools});
+        const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+        console.table(response.data);
+        setAllTools(response.data);
+        console.table({allTools});
   }
 
   return (
     <>
-      <div className= "projects-body">
-        <img src="" alt="" />
+      <div className= "all-tools-body">
         <h1>All Tools</h1>
-        <div className="landing-top"> {allTools && displayTools(allTools)} </div>
+        <div className="filter-tools-block">
+          <div className="filter-tools-list">
+            <li>Cutting</li>
+            <li>Drilling</li>
+            <li>Boring</li>
+            <li>Screwing</li>
+            <li>Soldering</li>
+            <li>Sanding</li>
+          </div>
+          {currentUser ? <a className="add-tool-button" onClick={toggleAdd}>Add a Tool</a> : null}
+          {toggleA ? <CreateItem /> : null }
+        </div>
+        <div className="all-tools-container"> {allTools && displayTools(allTools)} </div>
       </div>
     </>
   )

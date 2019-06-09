@@ -1,0 +1,36 @@
+.all-tools-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-tools-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filter-tools-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 500px;
+  margin: 10px 0;
+}
+
+.filter-tools-list > li {
+  margin: 0 10px;
+}
+
+.add-tool-button {
+  width: 100px;
+  margin: 0 10px;
+}
+
+.all-tools-container {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

@@ -11,10 +11,6 @@ const Nav = ({ currentUser, setCurrentUser, handleLogout }) => {
   const toggleLogin = async (e) => {(toggleL ? setToggleL(false) : setToggleL(true))},
         toggleSignup = async (e) => {(toggleS ? setToggleS(false) : setToggleS(true))};
 
-  // const LogUser = e => {
-  //   console.log(currentUser);
-  // };
-
   return (
     <nav>
       <div className="public-links">
@@ -32,14 +28,11 @@ const Nav = ({ currentUser, setCurrentUser, handleLogout }) => {
               <p className="nav-link" onClick={toggleSignup}>Sign Up</p>
               <p className="nav-link" onClick={toggleLogin}>Login</p>
             </div>
-            {toggleL === true ? <Login setCurrentUser={setCurrentUser}/> : <></> }
-            {toggleS === true ? <Signup /> : <></> }
+            {toggleL ? <Login setCurrentUser={setCurrentUser}/> : null }
+            {toggleS ? <Signup /> : null }
           </>}
     </nav>
   )
 }
 
 export default Nav;
-
-// NOOOOOOOTES
-// Make the toggling modals close each other when opened

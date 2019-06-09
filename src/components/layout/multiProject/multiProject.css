@@ -1,0 +1,35 @@
+.all-projects-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-projects-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filter-projects-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 500px;
+  margin: 10px 0;
+}
+
+.filter-projects-list > li {
+  margin: 0 10px;
+}
+
+.add-project-button {
+  width: 100px;
+  margin: 0 10px;
+}
+
+.all-projects-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

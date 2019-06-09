@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ArticleBlock from '../../replicated/articleBlock/articleBlock';
+import CreateItem from '../../replicated/createItem/createItem';
 import './multiProject.css';
 
-const Projects = () => {
+const Projects = ({ currentUser }) => {
   const [ allProjects, setAllProjects ] = useState([]);
-
-  // const displayProjects = data => data
-  //   .sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date))
-  //   .slice(0, 3)
-  //   .map(project => <ArticleBlock data={project} key={project._id}/>);
 
   const displayProjects = data => data
     .sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date))
@@ -30,10 +27,20 @@ const Projects = () => {
 
   return(
     <>
-      <div className= "projects-body">
-        <img src="" alt="" />
+      <div className= "all-projects-body">
         <h1>All Projects</h1>
-        <div className="landing-top"> {allProjects && displayProjects(allProjects)} </div>
+        <div className="filter-projects-block">
+          <div className="filter-projects-list">
+            <li>Woodworking</li>
+            <li>Metalworking</li>
+            <li>Home Improvement</li>
+            <li>Cars</li>
+            <li>Plumbing</li>
+            <li>Electrical</li>
+          </div>
+          {currentUser ? <Link className="add-project-button" to='/project/newProject'>Add a Project</Link> : null}
+        </div>
+        <div className="all-projects-container"> {allProjects && displayProjects(allProjects)} </div>
       </div>
     </>
   )
