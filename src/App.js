@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import Routes from './config/routes.js';
-import Nav from './components/nav/nav.js';
-import Aside from './components/aside/aside.js';
+import Nav from './components/layout/nav/nav.js';
+import './App.css';
 
-const App = () => {
+const App = ({history}) => {
   const [ currentUser, setCurrentUser ] = useState(localStorage.currentUser);
 
   const handleLogout = async () => {
@@ -19,7 +19,6 @@ const App = () => {
   return (
     <>
       <Nav handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-      <Aside />
       <Routes currentUser={currentUser}/>
     </>
   );

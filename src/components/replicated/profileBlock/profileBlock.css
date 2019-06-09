@@ -1,0 +1,23 @@
+.profile-block {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 80vw;
+  align-items: center;
+  margin: 10px 10px;
+}
+
+.profile-block-img {
+  height: 100px;
+  width: 200px;
+  background-color: aqua;
+  margin: 0;
+}
+
+.profile-text {
+  height: 50px;
+  width: 200px;
+  background-color: gold;
+  margin: 0;
+}
+
