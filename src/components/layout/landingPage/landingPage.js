@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './landingPage.css';
 import ArticleBlock from '../../replicated/articleBlock/articleBlock';
+import LandingCarousel from './landingCarousel/landingCarousel';
 
 const Landing = () => {
   const [ topProjects, setTopProjects ] = useState([]),
@@ -43,16 +44,17 @@ const Landing = () => {
   return(
     <>
       <img className="landing-icon" src="../images/tbLogo.png" alt="Landing Page Logo" />
-      <div className= "landing">
-        <h1>Top Projects</h1>
+      <div className= "landing-body">
+        {/* <LandingCarousel /> */}
         <div className="landing-top">
+          <h1>Top Projects</h1>
           {topProjects && displayProjects(topProjects)}
           <Link className="all-block" to='/projects'>All Projects</Link>
         </div>
-        <h1>Top Tools</h1>
-        <div className="landing-top">{topTools && displayTools(topTools)}
-          <Link className="all-block" to='/tools'>All Tools
-          </Link>
+        <div className="landing-top">
+          <h1>Top Tools</h1>
+          {topTools && displayTools(topTools)}
+          <Link className="all-block" to='/tools'>All Tools</Link>
         </div>
         <div className="landing-articles">
           <ul>

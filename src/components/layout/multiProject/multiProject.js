@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ArticleBlock from '../../replicated/articleBlock/articleBlock';
-import CreateItem from '../../replicated/createItem/createItem';
 import './multiProject.css';
 
 const Projects = ({ currentUser }) => {

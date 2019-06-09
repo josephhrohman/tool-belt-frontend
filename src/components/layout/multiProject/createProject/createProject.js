@@ -1,38 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './createItem.css'
+import './createProject.css'
 
-const CreateItem = ({ currentUser }) => {
-  const [ newItem, setNewItem ] = useState({
+const CreateProject = ({ currentUser, history }) => {
+  const [ newProject, setNewProject ] = useState({
           title: '',
           image_url: '',
           description: '',
-          user_id: currentUser
+          user_id: {currentUser}
         }),
-        {title, image_url, description,} = newItem;
+        {title, image_url, description,} = newProject;
 
   const handleChange = (e) => {
-        setNewItem({
-          ...newItem,
+        setNewProject({
+          ...newProject,
           [e.target.name]: e.target.value
         });
   };
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    console.log(newItem);
+    // console.log(newProject);
     try {
-      await axios.post('http://localhost:4000/api/v1/projects/', newItem, {withCredentials: true});
+      await axios.post('http://localhost:4000/api/v1/projects/', newProject, {withCredentials: true});
       console.log('success');
-      console.log(newItem);
+      console.log({newProject});
+      history.location.push('/');
     } catch(err) {
       console.log('failed')
     };
   };
 
+  const buttonClick = e => {
+    console.log({history});
+  }
+
   return (
-    <div className="create-item-body">
+    <div className="create-project-body">
       <h3>New Thing!</h3>
+      <a onClick={buttonClick}>Click</a>
       <form className='form-boxes' onSubmit={handleCreate}>
         <input className="inputField" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
         <input className="inputField" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />
@@ -43,7 +49,7 @@ const CreateItem = ({ currentUser }) => {
   )
 };
 
-export default CreateItem;
+export default CreateProject;
 
 // onSubmit={handleSignUp}
 

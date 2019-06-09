@@ -22,47 +22,46 @@ const Profile = () => {
 
   const displayTools    = data => data
         .map(tool => <ProfileTools data={tool} key={tool._id}/>);
-        
 
   useEffect(() => {
-    getProfile();
-    getToolBelt();
-    getProjects();
-    getTools();
+        getProfile();
+        getToolBelt();
+        getProjects();
+        getTools();
   }, []);
-
+  
   const getProfile = async () => {
-    try {
-      const response = await axios.get(`http://localhost:4000/api/v1/users/${localStorage.currentUser}`);
-      console.table(response.data.user);
-      setUserInfo(response.data.user);
-    } catch(err) {
-      console.log(err);
-      setError(err.response.data.error);
-    };
+        try {
+          const response = await axios.get(`http://localhost:4000/api/v1/users/${localStorage.currentUser}`);
+          console.table(response.data.user);
+          setUserInfo(response.data.user);
+        } catch(err) {
+          console.log(err);
+          setError(err.response.data.error);
+        };
   }
   
   const getToolBelt = async () => {
-    const response = await axios.get(`http://localhost:4000/api/v1/tools`);
-    console.table(response.data);
-    setToolBelt(response.data);
-    console.log({tools});
+        const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+        console.table(response.data);
+        setToolBelt(response.data);
+        console.log({tools});
   }
 
   const getProjects = async () => {
-    const response = await axios.get(`http://localhost:4000/api/v1/projects`);
-    console.table(response.data);
-    setUserProjects(response.data);
-    console.table({userProjects});
+        const response = await axios.get(`http://localhost:4000/api/v1/projects`);
+        console.table(response.data);
+        setUserProjects(response.data);
+        console.table({userProjects});
   }
-
+  
   const getTools = async () => {
-    const response = await axios.get(`http://localhost:4000/api/v1/tools`);
-    console.table(response.data);
-    setTools(response.data);
-    console.table({tools});
+        const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+        console.table(response.data);
+        setTools(response.data);
+        console.table({tools});
   }
-
+  
 
   return(
     <>
@@ -95,3 +94,16 @@ const Profile = () => {
 }
 
 export default Profile;
+
+//.filter((point) => {return point.user_id == userInfo._id})
+
+  // const heroes = [
+  //   {name: “Batman”, franchise: “DC”},
+  //   {name: “Ironman”, franchise: “Marvel”},
+  //   {name: “Thor”, franchise: “Marvel”},
+  //   {name: “Superman”, franchise: “DC”}
+  // ];
+  
+  // var marvelHeroes =  heroes.filter(function(hero) {
+  //   return hero.franchise == “Marvel”;
+  // });

@@ -6,7 +6,7 @@ import Nav from './components/layout/nav/nav.js';
 import Footer from './components/layout/footer/footer';
 import './App.css';
 
-const App = ({history}) => {
+const App = ({ history }) => {
   const [ currentUser, setCurrentUser ] = useState(localStorage.currentUser);
 
   const handleLogout = async () => {
@@ -20,7 +20,7 @@ const App = ({history}) => {
   return (
     <>
       <Nav handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-      <Routes currentUser={currentUser}/>
+      <Routes currentUser={currentUser} history={history}/>
       <Footer />
     </>
   );
