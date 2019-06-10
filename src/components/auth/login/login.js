@@ -16,14 +16,11 @@ const Login = ({ setCurrentUser, history }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/auth/login', userData, {
+      const response = await axios.post('https://toolbelt-backend.herokuapp.com/api/v1/auth/login', userData, {
         withCredentials: true});
         const currentUser = response.data;
         localStorage.currentUser = currentUser;
         setCurrentUser(currentUser);
-        // console.log(currentUser);
-        // console.log(history);
-        // history.push(`/profile/${currentUser}`);
       } catch(error) {
       console.log(error);
     };

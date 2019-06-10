@@ -22,7 +22,7 @@ const SignUp = () => {
     e.preventDefault();
     console.log(newUser);
     try {
-      await axios.post('http://localhost:4000/api/v1/auth/register', newUser, {withCredentials: true});
+      await axios.post('https://toolbelt-backend.herokuapp.com/api/v1/auth/register', newUser, {withCredentials: true});
       console.log('success');
     } catch(err) {
       console.log('failed')

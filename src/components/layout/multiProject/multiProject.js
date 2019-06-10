@@ -18,7 +18,7 @@ const Projects = ({ currentUser }) => {
   }, []);
 
   const getProjects = async () => {
-    const response = await axios.get(`http://localhost:4000/api/v1/projects`);
+    const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/projects`);
     console.table(response.data);
     setAllProjects(response.data);
     console.table({allProjects});

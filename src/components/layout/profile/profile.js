@@ -33,7 +33,7 @@ const Profile = () => {
   
   const getProfile = async () => {
         try {
-          const response = await axios.get(`http://localhost:4000/api/v1/users/${localStorage.currentUser}`);
+          const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/users/${localStorage.currentUser}`);
           console.table(response.data.user);
           setUserInfo(response.data.user);
         } catch(err) {
@@ -43,21 +43,21 @@ const Profile = () => {
   }
   
   const getToolBelt = async () => {
-        const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+        const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/tools`);
         console.table(response.data);
         setToolBelt(response.data);
         console.log({tools});
   }
 
   const getProjects = async () => {
-        const response = await axios.get(`http://localhost:4000/api/v1/projects`);
+        const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/projects`);
         console.table(response.data);
         setUserProjects(response.data);
         console.table({userProjects});
   }
   
   const getTools = async () => {
-        const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+        const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/tools`);
         console.table(response.data);
         setTools(response.data);
         console.table({tools});

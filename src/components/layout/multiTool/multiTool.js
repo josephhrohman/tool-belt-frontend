@@ -20,7 +20,7 @@ const Tools = ({ currentUser }) => {
   }, []);
 
   const getTools = async () => {
-        const response = await axios.get(`http://localhost:4000/api/v1/tools`);
+        const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/tools`);
         console.table(response.data);
         setAllTools(response.data);
         console.table({allTools});

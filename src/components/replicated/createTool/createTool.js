@@ -33,7 +33,7 @@ const CreateTool = ({ currentUser }) => {
     e.preventDefault();
     // setNewTool({...newTool, user_id: {currentUser}});
     try {
-      await axios.post('http://localhost:4000/api/v1/tools/', newTool, {withCredentials: true});
+      await axios.post('https://toolbelt-backend.herokuapp.com/api/v1/tools/', newTool, {withCredentials: true});
       console.log('success');
       console.log({newTool});
     } catch(err) {
