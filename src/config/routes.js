@@ -8,11 +8,13 @@ import Tools    from '../components/layout/multiTool/multiTool';
 import Tool    from '../components/layout/uniTool/uniTool';
 import CreateProject    from '../components/layout/multiProject/createProject/createProject';
 import CreateTool    from '../components/replicated/createTool/createTool';
+import Section    from '../components/replicated/section/section';
 
 const Routes = ({ currentUser, history }) => (
   <Switch>
     <Route exact path='/' render={ () => <Landing history={history} />} />
     <Route path='/profile/:userId' render={ (props) => <Profile {...props} currentUser={currentUser}/>} />
+    <Route path='/project/base' component={ Section } />
     <Route path='/projects/newProject' render={ (props) => <CreateProject {...props} currentUser={currentUser} history={history}/>} />
     <Route path='/projects/project' component={ Project } />
     <Route path='/projects/' render={ (props) => <Projects {...props} currentUser={currentUser} />} />

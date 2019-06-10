@@ -11,10 +11,13 @@ function Section({data}) {
     <div className="section-body">
       <img className="section-img" src={img_url} alt="Spalsh Img" />
       <div className="article-body">
-        <h1>Hammer</h1>
+        <h1>Title: Hammer</h1> <br/>
+        <h3>Author: Joseph</h3>
         <hr/>
-        <p className="description">With this tool you will beat things into submission</p>
+        <p className="description">Description: <br/>
+        With this tool you will beat things into submission</p>
         <hr/>
+        <h3>Notes:</h3>
         <p className="list-items">
           <List />
           <List />
