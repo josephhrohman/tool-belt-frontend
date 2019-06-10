@@ -1,7 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 import './profileBlock.css'
 
-function ProfileBlock({data, handleEdit, handleDelete}) {
+const ProfileBlock = ({ data }) => {
+  
+  const handleDelete = async () => {
+        const response = await axios.delete(`http://localhost:4000/api/v1/${data.category}s/${data._id}`);
+        console.table(response.data);
+  }
   
   return(
     <div className="profile-block">

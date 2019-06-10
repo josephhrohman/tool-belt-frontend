@@ -12,6 +12,6 @@ const ArticleBlock = ({data}) => {
       <p className="block-title">{data.creation_date}</p>
     </Link>
   )
-}
+};
 
 export default ArticleBlock;
