@@ -23,14 +23,14 @@ const Landing = () => {
   );
 
   const getProjects = async () => {
-    const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/projects`);
+    const response = await axios.get(`http://localhost:4000/api/v1/projects`);
     console.table(response.data);
     setTopProjects(response.data);
     console.table({topProjects});
   };
     
   const getTools = async () => {
-    const response = await axios.get(`https://toolbelt-backend.herokuapp.com/api/v1/tools`);
+    const response = await axios.get(`http://localhost:4000/api/v1/tools`);
     console.table(response.data);
     setTopTools(response.data);
     console.table({topTools});

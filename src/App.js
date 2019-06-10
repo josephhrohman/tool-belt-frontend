@@ -12,7 +12,7 @@ const App = ({ history }) => {
   const handleLogout = async () => {
     if (localStorage.currentUser && window.confirm('Logout ?')) {
       localStorage.removeItem('currentUser');
-      const response = await axios.post('https://toolbelt-backend.herokuapp.com/api/v1/auth/logout', {withCredentials: true});
+      const response = await axios.post('http://localhost:4000/api/v1/auth/logout', {withCredentials: true});
       console.log(response);
     }
   }

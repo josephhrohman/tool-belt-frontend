@@ -23,7 +23,7 @@ const CreateProject = ({ currentUser, history }) => {
     e.preventDefault();
     console.log(newProject);
     try {
-      await axios.post('https://toolbelt-backend.herokuapp.com/api/v1/projects/', newProject, {withCredentials: true});
+      await axios.post('http://localhost:4000/api/v1/projects/', newProject, {withCredentials: true});
       console.log('success');
       console.log({newProject});
     } catch(err) {
