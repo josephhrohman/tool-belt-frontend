@@ -47,12 +47,16 @@ const Landing = () => {
       <div className= "landing-body">
         {/* <LandingCarousel /> */}
         <div className="landing-top">
-          <h1>Top Projects</h1>
+          <h1>Categories</h1>
+          
+        </div>
+        <div className="landing-top">
+          <h1>Trending Projects</h1>
           {topProjects && displayProjects(topProjects)}
           <Link className="all-block" to='/projects'>All Projects</Link>
         </div>
         <div className="landing-top">
-          <h1>Top Tools</h1>
+          <h1>Trending Tools</h1>
           {topTools && displayTools(topTools)}
           <Link className="all-block" to='/tools'>All Tools</Link>
         </div>
