@@ -77,18 +77,18 @@ const Profile = ({ currentUser }) => {
         <img src={userInfo.image_url || "../images/tbLogo.png"} alt="Project Img" className="user-img"/>
       </div>
       <hr />
-      <div className='profile-section'>
         <h1 className="rotate">My ToolBelt</h1>
+      <div className='profile-section'>
         {toolBelt && displayToolBelt(toolBelt)}
       </div>
       <hr />
-      <div className='profile-section'>
         <h1 className="rotate">My Projects</h1>
+      <div className='profile-section'>
         {userProjects && displayProjects(userProjects)}
       </div>
       <hr />
-      <div className='profile-section'>
         <h1 className="rotate">My Tools</h1>
+      <div className='profile-section'>
         {tools && displayTools(tools)}
       </div>
       <hr />

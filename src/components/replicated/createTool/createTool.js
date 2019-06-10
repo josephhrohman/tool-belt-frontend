@@ -47,7 +47,7 @@ const CreateTool = ({ currentUser }) => {
 
   return (
     <div className="create-tool-body">
-      <h3>New Thing!</h3>
+      <h3 className="create-tool-title">New Tool!</h3>
       <form className='form-boxes-tool' onSubmit={handleCreate}>
         <input className="input-field-tool" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
         <input className="input-field-tool" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />

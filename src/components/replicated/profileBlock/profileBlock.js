@@ -15,6 +15,7 @@ const ProfileBlock = ({ data }) => {
       <p className="profile-block-title">Title: {data.title}</p>
       <p className="profile-block-text">Description: {data.description}</p>
       <p className="profile-block-text">Tool: {data.tool_id}</p>
+      <p className="profile-block-text">Ease of Use: {data.rating}</p>
       <div className="button-group">
         <button className="button">Edit</button>
         <button className="button" onClick={handleDelete}>Delete</button>

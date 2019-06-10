@@ -6,8 +6,9 @@
 
 }
 
-h3 {
-  margin-left: 10px;
+.create-tool-title {
+  margin: 20px;
+  padding: 10px;
 }
 
 .form-boxes-tool {
