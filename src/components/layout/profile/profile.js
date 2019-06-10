@@ -7,7 +7,7 @@ import './profile.css';
 
 //{ match, deletePost, currentUser }
 
-const Profile = () => {
+const Profile = ({ currentUser }) => {
   const [ error, setError ] = useState(null),
         // [ user, setUser ] = useState({}),
         [ userInfo, setUserInfo ] = useState({}),
@@ -16,9 +16,11 @@ const Profile = () => {
         [ tools, setTools ] = useState([]);
 
   const displayToolBelt = data => data
+        .filter(data => data.user == currentUser)
         .map(tool => <ToolBelt data={tool} key={tool._id}/>);
 
   const displayProjects = data => data
+        .filter(data => data.user == currentUser)
         .map(project => <ProfileBlock data={project} key={project._id}/>);
 
   const displayTools    = data => data
@@ -36,6 +38,7 @@ const Profile = () => {
           const response = await axios.get(`http://localhost:4000/api/v1/users/${localStorage.currentUser}`);
           console.table(response.data.user);
           setUserInfo(response.data.user);
+          console.log(currentUser);
         } catch(err) {
           console.log(err);
           setError(err.response.data.error);
@@ -76,7 +79,6 @@ const Profile = () => {
       <hr />
       <div className='profile-section'>
         <h1 className="rotate">My ToolBelt</h1>
-        <Link className="add-tool-button" to='/tool/toolBelt'>Got a Tool?</Link> 
         {toolBelt && displayToolBelt(toolBelt)}
       </div>
       <hr />

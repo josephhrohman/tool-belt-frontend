@@ -7,10 +7,11 @@ const CreateProject = ({ currentUser, history }) => {
           title: '',
           image_url: '',
           description: '',
+          rating: '',
           category: 'project',
           user: currentUser
         }),
-        {title, image_url, description} = newProject;
+        {title, image_url, description, rating} = newProject;
 
   const handleChange = (e) => {
         setNewProject({
@@ -34,11 +35,12 @@ const CreateProject = ({ currentUser, history }) => {
   return (
     <div className="create-project-body">
       <h3>New Thing!</h3>
-      <form className='form-boxes' onSubmit={handleCreate}>
-        <input className="inputField" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
-        <input className="inputField" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />
-        <input className="inputField" type="text" onChange={handleChange} value={description} name='description' placeholder="Description" />
-        <input className="inputField" type='submit' value='submit' />
+      <form className='form-boxes-project' onSubmit={handleCreate}>
+        <input className="input-field-project" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
+        <input className="input-field-project" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />
+        <input className="input-field-project" type="text" onChange={handleChange} value={description} name='description' placeholder="Description" />
+        <input className="input-field-project" type="text" onChange={handleChange} value={rating} name='rating' placeholder="Ease of Build Rating (1 - 10)" />
+        <input className="input-field-project" type='submit' value='submit' />
       </form>
     </div>
   )

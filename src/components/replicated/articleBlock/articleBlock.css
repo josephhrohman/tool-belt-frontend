@@ -10,10 +10,19 @@
   background-color: white;
 }
 
+.img-clip {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
 .block-img {
+  position: absolute;
+  z-index: 0;
+  margin: auto; 
   height: 200px;
   width: auto;
-  overflow: hidden;
 }
 
 .block-title {

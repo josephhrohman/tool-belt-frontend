@@ -12,7 +12,7 @@ import CreateTool    from '../components/replicated/createTool/createTool';
 const Routes = ({ currentUser, history }) => (
   <Switch>
     <Route exact path='/' render={ () => <Landing history={history} />} />
-    <Route path='/profile/:userId' render={ (props) => <Profile {...props} />} />
+    <Route path='/profile/:userId' render={ (props) => <Profile {...props} currentUser={currentUser}/>} />
     <Route path='/projects/newProject' render={ (props) => <CreateProject {...props} currentUser={currentUser} history={history}/>} />
     <Route path='/projects/project' component={ Project } />
     <Route path='/projects/' render={ (props) => <Projects {...props} currentUser={currentUser} />} />

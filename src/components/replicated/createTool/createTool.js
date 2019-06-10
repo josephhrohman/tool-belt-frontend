@@ -7,19 +7,23 @@ const CreateTool = ({ currentUser }) => {
           title: '',
           image_url: '',
           description: '',
+          rating: '',
           toolBelt: 'False',
           category: 'tool',
           user: currentUser,
         }),
-        {title, image_url, description,} = newTool;
+        {title, image_url, description, rating} = newTool;
 
   const handleToolBelt = async (e) => {
         if (newTool.toolBelt == 'false'){
           setNewTool({...newTool, toolBelt: 'true'});
+          document.getElementById("check-box").classList.add('check-box-on');
+          console.log(newTool)
         } else {
           setNewTool({...newTool, toolBelt: 'false'});
+          document.getElementById("check-box").classList.add('check-box-off');
+          console.log(newTool)
         }
-        console.log(newTool)
   };
 
   const handleChange = (e) => {
@@ -44,12 +48,13 @@ const CreateTool = ({ currentUser }) => {
   return (
     <div className="create-tool-body">
       <h3>New Thing!</h3>
-      <form className='form-boxes' onSubmit={handleCreate}>
-        <input className="inputField" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
-        <input className="inputField" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />
-        <input className="inputField" type="text" onChange={handleChange} value={description} name='description' placeholder="Description" />
-        <div className="check-box" onClick={handleToolBelt}>target</div>
-        <input className="inputField" type='submit' value='submit' />
+      <form className='form-boxes-tool' onSubmit={handleCreate}>
+        <input className="input-field-tool" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
+        <input className="input-field-tool" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />
+        <input className="input-field-tool" type="text" onChange={handleChange} value={description} name='description' placeholder="Description" />
+        <input className="input-field-tool" type="text" onChange={handleChange} value={rating} name='rating' placeholder="Ease of Use Rating (1 - 10)" />
+        <div className="check-box-off" id="check-box" onClick={handleToolBelt}>Tool Belt</div>
+        <input className="input-field-tool" type='submit' value='submit' />
       </form>
     </div>
   )

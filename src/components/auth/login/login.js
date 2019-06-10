@@ -29,10 +29,10 @@ const Login = ({ setCurrentUser, history }) => {
   return (
     <div className="login-modal">
       <h3>Login</h3>
-      <form className="form-boxes" onSubmit={handleSubmit}>
-        <input className="inputField" type="email" id='email' onChange={handleChange} name='email' value={email} placeholder="Email" />
-        <input className="inputField" type="password" id='password' onChange={handleChange} name='password' value={password} placeholder="Password" />
-        <input className="inputField" type='submit' value='submit' />
+      <form className="form-boxes-login" onSubmit={handleSubmit}>
+        <input className="input-field-login" type="email" id='email' onChange={handleChange} name='email' value={email} placeholder="Email" />
+        <input className="input-field-login" type="password" id='password' onChange={handleChange} name='password' value={password} placeholder="Password" />
+        <input className="input-field-login" type='submit' value='submit' />
       </form>
     </div>
   )

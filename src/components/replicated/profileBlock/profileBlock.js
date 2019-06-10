@@ -2,6 +2,7 @@ import React from 'react';
 import './profileBlock.css'
 
 function ProfileBlock({data, handleEdit, handleDelete}) {
+  
   return(
     <div className="profile-block">
       <img className="profile-block-img" src={data.image_url} alt="Profile Block Component" />
@@ -10,7 +11,7 @@ function ProfileBlock({data, handleEdit, handleDelete}) {
       <p className="profile-block-text">Tool: {data.tool_id}</p>
       <div className="button-group">
         <button className="button">Edit</button>
-        <button className="button">Delete</button>
+        <button className="button" onClick={handleDelete}>Delete</button>
       </div>
     </div>
   )

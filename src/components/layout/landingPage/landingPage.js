@@ -45,11 +45,7 @@ const Landing = () => {
     <>
       <img className="landing-icon" src="../images/tbLogo.png" alt="Landing Page Logo" />
       <div className= "landing-body">
-        {/* <LandingCarousel /> */}
-        <div className="landing-top">
-          <h1>Categories</h1>
-          
-        </div>
+        <LandingCarousel />
         <div className="landing-top">
           <h1>Trending Projects</h1>
           {topProjects && displayProjects(topProjects)}
@@ -59,6 +55,23 @@ const Landing = () => {
           <h1>Trending Tools</h1>
           {topTools && displayTools(topTools)}
           <Link className="all-block" to='/tools'>All Tools</Link>
+        </div>
+        <div className="landing-cat">
+          <h1>Categories</h1>
+          <div className="landing-cat-list">
+            <li>Woodworking</li>
+            <li>Metalworking</li>
+            <li>Home Improvement</li>
+            <li>Cars</li>
+            <li>Plumbing</li>
+            <li>Electrical</li>
+            <li>Cutting</li>
+            <li>Drilling</li>
+            <li>Boring</li>
+            <li>Screwing</li>
+            <li>Soldering</li>
+            <li>Sanding</li>
+          </div>
         </div>
         <div className="landing-articles">
           <ul>
