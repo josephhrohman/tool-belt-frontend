@@ -7,9 +7,20 @@ const CreateTool = ({ currentUser }) => {
           title: '',
           image_url: '',
           description: '',
-          user_id: {currentUser}
+          toolBelt: 'False',
+          category: 'tool',
+          user: currentUser,
         }),
         {title, image_url, description,} = newTool;
+
+  const handleToolBelt = async (e) => {
+        if (newTool.toolBelt == 'false'){
+          setNewTool({...newTool, toolBelt: 'true'});
+        } else {
+          setNewTool({...newTool, toolBelt: 'false'});
+        }
+        console.log(newTool)
+  };
 
   const handleChange = (e) => {
         setNewTool({
@@ -20,7 +31,7 @@ const CreateTool = ({ currentUser }) => {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    // console.log(newItem);
+    // setNewTool({...newTool, user_id: {currentUser}});
     try {
       await axios.post('http://localhost:4000/api/v1/tools/', newTool, {withCredentials: true});
       console.log('success');
@@ -37,6 +48,7 @@ const CreateTool = ({ currentUser }) => {
         <input className="inputField" type="text" onChange={handleChange} value={title} name='title' placeholder="Title" />
         <input className="inputField" type="text" onChange={handleChange} value={image_url} name='image_url' placeholder="Image URL" />
         <input className="inputField" type="text" onChange={handleChange} value={description} name='description' placeholder="Description" />
+        <div className="check-box" onClick={handleToolBelt}>target</div>
         <input className="inputField" type='submit' value='submit' />
       </form>
     </div>

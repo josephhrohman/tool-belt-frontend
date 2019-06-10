@@ -7,11 +7,11 @@ import Project from '../components/layout/uniProject/uniProject';
 import Tools    from '../components/layout/multiTool/multiTool';
 import Tool    from '../components/layout/uniTool/uniTool';
 import CreateProject    from '../components/layout/multiProject/createProject/createProject';
-import CreateTool    from '../components/layout/multiTool/createTool/createTool';
+import CreateTool    from '../components/replicated/createTool/createTool';
 
 const Routes = ({ currentUser, history }) => (
   <Switch>
-    <Route exact path='/' render={ (props) => <Landing history={history} />} />
+    <Route exact path='/' render={ () => <Landing history={history} />} />
     <Route path='/profile/:userId' render={ (props) => <Profile {...props} />} />
     <Route path='/projects/newProject' render={ (props) => <CreateProject {...props} currentUser={currentUser} history={history}/>} />
     <Route path='/projects/project' component={ Project } />

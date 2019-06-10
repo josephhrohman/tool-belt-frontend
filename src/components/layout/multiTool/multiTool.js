@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ArticleBlock from '../../replicated/articleBlock/articleBlock';
-import CreateItem from '../../replicated/createItem/createItem';
+import CreateTool from '../../replicated/createTool/createTool';
 import './multiTool.css';
 
 const Tools = ({ currentUser }) => {
@@ -40,7 +40,7 @@ const Tools = ({ currentUser }) => {
             <li>Sanding</li>
           </div>
           {currentUser ? <Link className="add-tool-button" to='/tools/newTool'>Add a Tool</Link> : null}
-          {toggleA ? <CreateItem /> : null }
+          {toggleA ? <CreateTool /> : null }
         </div>
         <div className="all-tools-container"> {allTools && displayTools(allTools)} </div>
       </div>

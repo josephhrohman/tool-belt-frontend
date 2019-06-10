@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProfileBlock from '../../replicated/profileBlock/profileBlock';
-import ProfileTools from '../../replicated/profileTools/profileTools';
+import ToolBelt from '../../replicated/toolBelt/toolBelt';
 import axios from 'axios';
 import './profile.css';
 
@@ -15,13 +16,13 @@ const Profile = () => {
         [ tools, setTools ] = useState([]);
 
   const displayToolBelt = data => data
-        .map(tool => <ProfileBlock data={tool} key={tool._id}/>);
+        .map(tool => <ToolBelt data={tool} key={tool._id}/>);
 
   const displayProjects = data => data
         .map(project => <ProfileBlock data={project} key={project._id}/>);
 
   const displayTools    = data => data
-        .map(tool => <ProfileTools data={tool} key={tool._id}/>);
+        .map(tool => <ProfileBlock data={tool} key={tool._id}/>);
 
   useEffect(() => {
         getProfile();
@@ -61,7 +62,6 @@ const Profile = () => {
         setTools(response.data);
         console.table({tools});
   }
-  
 
   return(
     <>
@@ -75,17 +75,18 @@ const Profile = () => {
       </div>
       <hr />
       <div className='profile-section'>
-        <h1>My Tool Belt</h1>
+        <h1 className="rotate">My ToolBelt</h1>
+        <Link className="add-tool-button" to='/tool/toolBelt'>Got a Tool?</Link> 
         {toolBelt && displayToolBelt(toolBelt)}
       </div>
       <hr />
       <div className='profile-section'>
-        <h1>My Projects</h1>
+        <h1 className="rotate">My Projects</h1>
         {userProjects && displayProjects(userProjects)}
       </div>
       <hr />
       <div className='profile-section'>
-        <h1>My Tools</h1>
+        <h1 className="rotate">My Tools</h1>
         {tools && displayTools(tools)}
       </div>
       <hr />
